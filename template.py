@@ -25,6 +25,7 @@ list_of_files = [
     f"{project_name}/logger/traning_pipeline.py",
     f"{project_name}/utils/__init__.py",
     f"{project_name}/utils/main_utils.py",
+    "research/trials.ipynb",
     "templates/index.html",
     "app.py",
     "Dockerfile",
@@ -54,14 +55,22 @@ def create_project_structure(list_of_files):
 
         # Create directory if it doesn't exist
         if filedir != '':
-            os.makedirs(filedir, exist_ok=True)
-            logging.info(f"Created directory: {filedir} for the file {filename}")
+            try:
+                os.makedirs(filedir, exist_ok=True)
+                logging.info(f"Created directory: {filedir} for the file {filename}")
+            except PermissionError as e:
+                logging.error(f"Permission denied: {e}")
 
         # Create empty file if it doesn't exist or is empty
         if not filepath.exists() or filepath.stat().st_size == 0:
-            with open(filepath, "w"):
-                pass
-            logging.info(f"Created empty file: {filename}")
+            # Check if the path corresponds to a directory
+            if not os.path.isdir(str(filepath)):
+                try:
+                    with open(filepath, "w"):
+                        pass
+                    logging.info(f"Created empty file: {filename}")
+                except PermissionError as e:
+                    logging.error(f"Permission denied: {e}")
         else:
             logging.info(f"{filename} already exists")
 
