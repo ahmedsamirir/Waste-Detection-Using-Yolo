@@ -6,24 +6,7 @@ logging.basicConfig(level=logging.INFO, format='[%(asctime)s]: %(message)s:')
 
 project_name = "wasteDetection"
 
-# Directory structure for project components
-directories = [
-    ".github/workflows",
-    "data",
-    f"{project_name}",
-    f"{project_name}/components",
-    f"{project_name}/constant",
-    f"{project_name}/constant/training_pipeline",
-    f"{project_name}/entity",
-    f"{project_name}/exception",
-    f"{project_name}/logger",
-    f"{project_name}/pipeline",
-    f"{project_name}/utils",
-    "templates"
-]
-
-# Files within project components
-files = [
+list_of_files = [
     ".github/workflows/.gitkeep",
     "data/.gitkeep",
     f"{project_name}/__init__.py",
@@ -32,14 +15,14 @@ files = [
     f"{project_name}/components/data_validation.py",
     f"{project_name}/components/model_trainer.py",
     f"{project_name}/constant/__init__.py",
-    f"{project_name}/constant/training_pipeline/__init__.py",
+    f"{project_name}/constant/traning_pipeline/__init__.py",
     f"{project_name}/constant/application.py",
     f"{project_name}/entity/config_entity.py",
     f"{project_name}/entity/artifacts_entity.py",
     f"{project_name}/exception/__init__.py",
     f"{project_name}/logger/__init__.py",
     f"{project_name}/pipeline/__init__.py",
-    f"{project_name}/logger/training_pipeline.py",
+    f"{project_name}/logger/traning_pipeline.py",
     f"{project_name}/utils/__init__.py",
     f"{project_name}/utils/main_utils.py",
     "research/trials.ipynb",
@@ -49,9 +32,6 @@ files = [
     "requirements.txt",
     "setup.py"
 ]
-
-# Combine directories and files
-list_of_files = directories + files
 
 
 def create_project_structure(list_of_files):
